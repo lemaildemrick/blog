@@ -6,6 +6,10 @@ default:
             paths: [%paths.base%/features]
             contexts:
                 - Context\UserContext
+                - Knp\FriendlyContexts\Context\EntityContext
+                - Knp\FriendlyContexts\Context\PageContext
+                - Knp\FriendlyContexts\Context\TableContext
+                - Knp\FriendlyContexts\Context\AliceContext
     extensions:
         Behat\MinkExtension\ServiceContainer\MinkExtension:
             base_url:           'http://localhost:8000/app_dev.php'
