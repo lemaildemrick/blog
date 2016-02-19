@@ -23,13 +23,13 @@ class UserController extends Controller
     {
         $user = new User();
 
-        $formUserAccount = $this->createForm(UserCreateAccountType::class,$user)->handleRequest($request);
+        $formUserAccount = $this->createForm(UserCreateAccountType::class, $user)->handleRequest($request);
 
         if ($formUserAccount->isValid()) {
             $encryptedPassword = $this
                 ->get('security.encoder_factory')
                 ->getEncoder($user)
-                ->encodePassword($user->getPlainPassword(),$user->getSalt())
+                ->encodePassword($user->getPlainPassword(), $user->getSalt())
             ;
 
             $user->setPassword($encryptedPassword);

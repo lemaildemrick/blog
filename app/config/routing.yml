@@ -1,3 +1,15 @@
-knoodle:
+blog:
     resource : "@BlogBundle/Resources/config/routing.yml"
     prefix : /blog
+
+app_login:
+  path: /login
+  defaults: { _controller:"BlogBundle:Security:login" }
+  methods: [GET]
+
+app_login_check:
+  path: /login-check
+
+app_logout:
+  path: /logout
+

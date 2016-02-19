@@ -63,33 +63,33 @@ class User implements UserInterface
          */
         public function __construct()
         {
-            $this->roles = [];
+            $this->roles = ['ROLE_USER'];
         }
 
 
-        public function getPlainPassword()
-        {
-            return $this->plainPassword;
-        }
+    public function getPlainPassword()
+    {
+        return $this->plainPassword;
+    }
 
-        public function setPlainPassword($password)
-        {
-            $this->plainPassword = $password;
+    public function setPlainPassword($password)
+    {
+        $this->plainPassword = $password;
 
-            return $this;
-        }
+        return $this;
+    }
 
-        public function getId()
-        {
-            return $this->id;
-        }
+    public function getId()
+    {
+        return $this->id;
+    }
 
-        public function setId($id)
-        {
-            $this->id = $id;
+    public function setId($id)
+    {
+        $this->id = $id;
 
-            return $this;
-        }
+        return $this;
+    }
 
 
         /**
@@ -189,7 +189,7 @@ class User implements UserInterface
          */
         public function getRoles()
         {
-            return $this->$roles;
+            return $this->roles;
         }
 
 
