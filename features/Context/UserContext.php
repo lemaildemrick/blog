@@ -3,8 +3,9 @@
 namespace Context;
 
 use Behat\Behat\Context\Context;
+use Knp\FriendlyContexts\Context\RawMinkContext;
 
-class UserContext implements Context
+class UserContext extends RawMinkContext
 {
 
 }
