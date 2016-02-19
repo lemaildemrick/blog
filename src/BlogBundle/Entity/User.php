@@ -1,6 +1,6 @@
 <?php
 
-namespace Blog\Entity;
+namespace BlogBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -15,15 +15,41 @@ use Symfony\Component\Security\Core\User\UserInterface;
  */
 class User implements UserInterface {
 
+		/**
+	     * @ORM\Id
+	     * @ORM\GeneratedValue
+	     * @ORM\Column(type="integer")
+	     */
+		private $id;
 
+
+	    /**
+	     * @ORM\Column(type="string", name="username")
+	     */
 		private $username;
 
+
+	    /**
+	     * @ORM\Column(type="string", name="firstname")
+	     */
 		private $firstname;
 
+
+	    /**
+	     * @ORM\Column(type="string", name="lastname")
+	     */
 		private $lastname;
 
+
+	    /**
+	     * @ORM\Column(type="string", name="password")
+	     */
 		private $password;
 
+
+		/**
+		 * @ORM\Column(type="array",name="roles")
+		 */
 		private $roles;
 
 
@@ -33,6 +59,18 @@ class User implements UserInterface {
 		public function __construct()
 		{
 			$this->roles = [];
+		}
+
+		public function getId()
+		{
+			return $this->id;
+		}
+
+		public function setId($id)
+		{
+			$this->id = $id;
+
+			return $this;
 		}
 
 
@@ -51,6 +89,8 @@ class User implements UserInterface {
 		public function setUsername($username)
 		{
 			$this->username = $username;
+
+			return $this;
 		}
 
 
@@ -68,7 +108,7 @@ class User implements UserInterface {
 		 */
 		public function getLastname()
 		{
-			return $this->lasttname;
+			return $this->lastname;
 		}
 
 
@@ -78,6 +118,8 @@ class User implements UserInterface {
 		public function setFirstname($firstname)
 		{
 			$this->firstname = $firstname;
+
+			return $this;
 		}
 		
 
@@ -87,6 +129,8 @@ class User implements UserInterface {
 		public function setLastname($lastname)
 		{
 		 	$this->lastname = $lastname;
+
+		 	return $this;
 		}
 
 
@@ -104,6 +148,8 @@ class User implements UserInterface {
 		public function setPassword($password)
 		{
 			$this->password = $password;
+
+			return $this;
 		}
 
 
@@ -139,7 +185,7 @@ class User implements UserInterface {
 	     */
 	    public function getSalt()
 	    {
-	    	return '' ;	
+	    	return null ;	
 	    }
 
 	    /**

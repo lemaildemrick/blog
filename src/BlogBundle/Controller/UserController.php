@@ -6,8 +6,9 @@ namespace BlogBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
-use BlogBundle\Form\Model\UserCreateAccount;
 use BlogBundle\Form\Type\UserCreateAccountType;
+use BlogBundle\Entity\User;
+
 
 /**
  * 
@@ -24,19 +25,17 @@ class UserController extends Controller{
 	 */
 	public function createUserAccountAction(Request $request)
 	{
-		$formUserAccount = $this->createForm(UserCreateAccountType::class,new UserCreateAccount());
-
-		$formUserAccount->handleRequest($request);
+		$formUserAccount = $this->createForm(UserCreateAccountType::class, new User())->handleRequest($request);
 
 		if ( $formUserAccount->isValid() ){
-	     	$em = $this->getDoctrine()->getManager();
+			$em = $this->getDoctrine()->getManager();
 
-	     	$userInCreating = $formUserAccount->getData();
-	     	
+			$user = $formUserAccount->getData();
+
+	     	$em->persist($user);
+			$em->flush();
 
 		    $this->addFlash('success','Votre compte a été créé');
-
-	       	//return $this->redirectToRoute('knoodle_survey_show',['surveyId' => $surveyId ]);
 	    }
 
 
