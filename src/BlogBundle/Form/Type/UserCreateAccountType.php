@@ -26,7 +26,7 @@ class UserCreateAccountType extends AbstractType
             ->add('username', TextType::class)
             ->add('firstname', TextType::class)
             ->add('lastname', TextType::class)
-            ->add('password', RepeatedType::class, [
+            ->add('plainPassword', RepeatedType::class, [
                 'type' => PasswordType::class,
                     'first_options' => [
                        'label' => 'Your password',
@@ -35,7 +35,7 @@ class UserCreateAccountType extends AbstractType
                         'label' => 'Repeat your password',
                     ]
                 ])
-                ;
+        ;
     }
 
     public function configureOptions(OptionsResolver $resolver)

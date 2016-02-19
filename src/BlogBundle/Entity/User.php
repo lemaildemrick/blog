@@ -46,6 +46,11 @@ class User implements UserInterface
          */
         private $password;
 
+        /**
+         * 
+         */
+        private $plainPassword;
+
 
         /**
          * @ORM\Column(type="array",name="roles")
@@ -61,17 +66,30 @@ class User implements UserInterface
             $this->roles = [];
         }
 
-    public function getId()
-    {
-        return $this->id;
-    }
 
-    public function setId($id)
-    {
-        $this->id = $id;
+        public function getPlainPassword()
+        {
+            return $this->plainPassword;
+        }
 
-        return $this;
-    }
+        public function setPlainPassword($password)
+        {
+            $this->plainPassword = $password;
+
+            return $this;
+        }
+
+        public function getId()
+        {
+            return $this->id;
+        }
+
+        public function setId($id)
+        {
+            $this->id = $id;
+
+            return $this;
+        }
 
 
         /**

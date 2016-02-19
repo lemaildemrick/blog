@@ -16,28 +16,31 @@ use BlogBundle\Entity\User;
  */
 class UserController extends Controller
 {
-
-
-
     /**
      * 
      */
     public function createUserAccountAction(Request $request)
     {
-        $formUserAccount = $this->createForm(UserCreateAccountType::class, new User())->handleRequest($request);
+        $user = new User();
+
+        $formUserAccount = $this->createForm(UserCreateAccountType::class,$user)->handleRequest($request);
 
         if ($formUserAccount->isValid()) {
-            $em = $this->getDoctrine()->getManager();
+            $encryptedPassword = $this
+                ->get('security.encoder_factory')
+                ->getEncoder($user)
+                ->encodePassword($user->getPlainPassword(),$user->getSalt())
+            ;
 
-            $user = $formUserAccount->getData();
+            $user->setPassword($encryptedPassword);
+
+            $em = $this->getDoctrine()->getManager();
 
             $em->persist($user);
             $em->flush();
 
             $this->addFlash('success', 'Votre compte a été créé');
         }
-
-
 
         return $this->render('BlogBundle:User:createUserAccount.html.twig', [
             'form'    => $formUserAccount->createView()
