@@ -1,0 +1,21 @@
+{% extends 'BlogBundle::layout.html.twig' %}  
+
+{% block content %}
+   <div id="create-account">
+        {{ form_start(form) }}
+        {{ form_errors(form) }}
+
+        {{ form_row(form.username) }} 
+        {{ form_row(form.firstname) }}
+        {{ form_row(form.lastname) }}
+        {{ form_row(form.plainPassword) }}
+
+        {{ form_rest(form) }}
+
+        <button type="submit" class="button">Validate</button>
+
+        {{ form_end(form) }}
+
+   	</div>
+
+{% endblock %}

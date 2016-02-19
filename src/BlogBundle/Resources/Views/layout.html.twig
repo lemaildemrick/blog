@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Blog KNP</title>
+        <link rel="stylesheet" href="{{ asset('bundles/blog/css/style.css') }}" media="all" />
+    </head>
+    <body>
+        <header></header>
+        <div id="content">
+            {% if app.session.flashbag.peekAll %}
+                <div id="flashes">
+                    {% for name,messages in app.session.flashbag.all %}
+                        {% for message in messages %}
+                            <div class="flash {{ name }}">
+                                {{ message}}
+
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
+                </div>
+            {%  endif %}
+            <div class="wrap">
+                {% block content '' %}
+            </div>
+        </div>
+        <footer></footer>
+    </body>
+</html>

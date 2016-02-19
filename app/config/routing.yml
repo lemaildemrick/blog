@@ -1,0 +1,3 @@
+knoodle:
+    resource : "@BlogBundle/Resources/config/routing.yml"
+    prefix : /blog
