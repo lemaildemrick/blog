@@ -1,0 +1,18 @@
+default:
+    autoload:
+        '': %paths.base%/features
+    suites:
+        defaults:
+            paths: [%paths.base%/features]
+            contexts:
+                - Context\UserContext
+    extensions:
+        Behat\MinkExtension\ServiceContainer\MinkExtension:
+            base_url:           'http://localhost:8000/app_dev.php'
+            files_path:         './features/Context/Resources'
+            selenium2:          ~
+            goutte:             ~
+            default_session:    goutte
+            javascript_session: selenium2
+            show_cmd:           "firefox %s"
+
