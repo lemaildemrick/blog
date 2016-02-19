@@ -36,7 +36,6 @@ class UserCreateAccountType extends AbstractType
                     ]
                 ])
                 ;
-
     }
 
     public function configureOptions(OptionsResolver $resolver)
@@ -51,7 +50,8 @@ class UserCreateAccountType extends AbstractType
      *
      * @return String
      */
-    public function getName(){
+    public function getName()
+    {
         return 'user_create_account';
     }
 }
